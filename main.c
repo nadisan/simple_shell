@@ -30,6 +30,8 @@ int main(void)
 		}
 		argv = malloc(sizeof(char) * input);
 		argv[0] = strtok(line, " \n");
+		if (argv == NULL)
+			return (-1);
 		while (argv[i])
 		{
 			i++;
