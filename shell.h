@@ -11,6 +11,7 @@ extern char **environ;
 
 int _putchar(char c);
 _strcmp(char *s1, char *s2);
+int exitShell(char args[]);
 void printEnv(void);
 
 #endif
