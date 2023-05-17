@@ -4,10 +4,15 @@
 #include <string.h>
 #include <sys/wait.h>
 
-int main()
+/**
+  * main - simple_shell program
+  * Return: 0 (program successful)
+  */
+
+int main(void)
 {
-        char *buffer = "($) ";
-      	ssize_t input;
+	char *buffer = "($) ";
+	ssize_t input;
 	char *line = NULL;
 	size_t len = 0;
 	char **argv;
@@ -19,7 +24,7 @@ int main()
 		write(STDOUT_FILENO, buffer, 3);
 		input = getline(&line, &len, stdin);
 		if (input == -1)
-		{	write(1,"\n", 1);
+		{	write(1, "\n", 1);
 			free(line);
 			break;
 		}
@@ -45,7 +50,7 @@ int main()
 			free(argv);
 			exit(EXIT_FAILURE);
 		}
-		else 
+		else
 			waitpid(pid, &status, 0);
 		free(argv);
 	}
