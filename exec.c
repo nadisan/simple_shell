@@ -3,11 +3,11 @@
 
 
 /**
- * main - execve example
+ * eg_exec- execve example
  *
  * Return: Always 0.
  */
-int main(void)
+int eg_exec(void)
 {
 	char *argv[] = {"/bin/ls", "-l", "/usr/", NULL};
 	printf("Before execve\n");

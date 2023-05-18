@@ -5,11 +5,11 @@
 #include <sys/wait.h>
 
 /**
-  * main - simple_shell program
+  * prompt - simple_shell program
   * Return: 0 (program successful)
   */
 
-int main(void)
+int prompt(void)
 {
 	char *buffer = "$ ";
 	ssize_t input;
@@ -27,4 +27,5 @@ int main(void)
 		}
 		printf("%s", line);
 	}
+	return (0);
 }
