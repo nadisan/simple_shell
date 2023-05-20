@@ -73,6 +73,8 @@ int main(void)
 			free(argv);
 			break;
 		}
+		if (_strcmp("env", argv[0]) == 0)
+			printEnv();
 		_exec(argv);
 		free(argv);
 	}
