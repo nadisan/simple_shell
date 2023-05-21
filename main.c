@@ -74,6 +74,7 @@ int main(void)
 			break;
 		}
 		_exec(argv);
+		i = 0;
 		free(argv);
 	}
 	return (0);
