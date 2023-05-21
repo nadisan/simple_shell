@@ -6,26 +6,33 @@
 #include "shell.h"
 #include <sys/stat.h>
 
+/**
+  * check_cmd - check access of cmd
+  * @argv: argument array
+  * &env: array of enviroment
+  * Return: 0 (program successful)
+  */
+
 void check_cmd (char **argv, char **env)
 {
-        struct stat fs;
+	struct stat fs;
 
-        if (access(argv[0], F_OK) == 0)
-                {
-                        if (stat(argv[0], &fs) != -1)
-                        {
-                                if (fs.st_mode == 16877)
-                                {       write(1, "bash :", 7);
-                                        write(1, argv[0], sizeof(argv[0]));
-                                        write(1, " : is a directory\n", 20);
-                                }
-                                else
-                                        _exec(argv);
-
-                       }
-                }
-        else
-                cmdpath(env, argv);
+	if (access(argv[0], F_OK) == 0)
+	{
+		if (stat(argv[0], &fs) != -1)
+		{
+			if (fs.st_mode == 16877)
+			{
+				write(1, "bash :", 7);
+				write(1, argv[0], sizeof(argv[0]));
+				write(1, " : is a directory\n", 20);
+			}
+			else
+				_exec(argv);
+		}
+	}
+	else
+		cmdpath(env, argv);
 }
 
 
