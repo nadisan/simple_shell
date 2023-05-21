@@ -8,23 +8,24 @@
 
 int _exec(char **argv)
 {
-        pid_t pid;
-        int status;
+	pid_t pid;
+	int status;
 	extern char **environ;
 
-        pid = fork();
+	pid = fork();
 
-        if (pid == -1)
-        {       perror("fork");
-                exit(EXIT_FAILURE);
-        }
-        else if (pid == 0)
-        {
-                execve(argv[0], argv, environ);
-                perror("Error:");
-                exit(EXIT_FAILURE);
-        }
-        else
-                waitpid(pid, &status, 0);
-        return (0);
+	if (pid == -1)
+	{
+		perror("fork");
+		exit(EXIT_FAILURE);
+	}
+	else if (pid == 0)
+	{
+		execve(argv[0], argv, environ);
+		perror("Error:");
+		exit(EXIT_FAILURE);
+	}
+	else
+		waitpid(pid, &status, 0);
+	return (0);
 }
