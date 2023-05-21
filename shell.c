@@ -1,4 +1,4 @@
-#include <stdio.h>
+#INclude <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
@@ -75,6 +75,11 @@ int main(void)
         }
         else if (procId == -1)
             perror("Error: Forking failed!");
+    }
+     else if (token != NULL && *token != '\n' && (strcmp(token, "exit") == 0))
+    {
+        printf("Exiting....\n");
+        return (0);
     }
     printf("<<<<< 💯 At the end of parent process, exiting 💯 >>>>>\n");
 
