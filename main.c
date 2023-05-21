@@ -77,6 +77,7 @@ int main(void)
 			printEnv();
 		_exec(argv);
 		free(argv);
+		i = 0;
 	}
 	return (0);
 }
