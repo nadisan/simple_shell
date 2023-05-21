@@ -9,11 +9,11 @@
 /**
   * check_cmd - check access of cmd
   * @argv: argument array
-  * &env: array of enviroment
+  * @env: array of enviroment
   * Return: 0 (program successful)
   */
 
-void check_cmd (char **argv, char **env)
+void check_cmd(char **argv, char **env)
 {
 	struct stat fs;
 
@@ -40,6 +40,7 @@ void check_cmd (char **argv, char **env)
   * main - simple_shell program
   * @ac: number of arguments
   * @av: argument array
+  * @env: environment variable
   * Return: 0 (program successful)
   */
 
