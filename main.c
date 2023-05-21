@@ -6,52 +6,48 @@
 #include "shell.h"
 #include <sys/stat.h>
 
+/**
+  * envi - executes cmd if it's in path
+  * @argv: argument array
+  * Return: 0 (program successful)
+  */
+
 void envi(char **env, char **argv)
 {
-        unsigned int i, j = 0;
-	char *path;
-	char *ele;
+	unsigned int i, j = 0;
+	char *path, *ele, *ch = "/", *str = NULL;
 	struct stat st;
-char result[100];	
-char *str;
-char *ch = "/";
+	char result[100];
 
-str = argv[0];
-
-        i = 0;
-        while (env[i] != NULL)
-        {
-		path = strdup(env[i]);
-	
-                if (strcmp("PATH", strtok(path, "=")) == 0)
-                        break;
-                i++;
-        }
+	str = argv[0];
+	i = 0;
+	while (env[i] != NULL)
+	{	path = strdup(env[i]);
+		if (_strcmp("PATH", strtok(path, "=")) == 0)
+			break;
+		i++;
+	}
 	ele = malloc(sizeof(env[i]));
 	ele =  strtok(NULL, ":");
-	while(ele)
-	{
-		strcpy(result, ele);
+	while (ele)
+	{	strcpy(result, ele);
 		strcat(result, ch);
 		strcat(result, str);
-		
 		if (stat(result, &st) == 0)
-		{
-			argv[0] = result;
+		{	argv[0] = result;
 			break;
-       		}
-	       
+		}
 		j++;
 		ele = strtok(NULL, ":");
 	}
 	_exec(argv);
-	printf("%s", argv[0]);
-	printf("%s", argv[1]);
+	ele = '\0';
 }
-
 
 /**
   * main - simple_shell program
+  * @ac: number of arguments
+  * @av: argument array
   * Return: 0 (program successful)
   */
 
@@ -84,26 +80,29 @@ int main(int ac, char **av, char **env)
 		{	i++;
 			argv[i] = strtok(NULL, " \n");
 		}
-		if (strcmp("exit", argv[0]) == 0)
+		if (_strcmp("exit", argv[0]) == 0)
 		{	free(line);
 			free(argv);
 			break;
 		}
-		if (access(argv[0],F_OK) == 0)
-		{	 if(stat(argv[0],&fs) != -1)
-		
-             			{	if (fs.st_mode == 16877)
-                                	{        write(1, "bash :", 7);
-						 write(1, argv[0], sizeof(argv[0]));
-						write(1, " : is a directory\n", 20);
-                                	}
-					else
-						_exec(argv);
+		if (access(argv[0], F_OK) == 0)
+		{
+			if (stat(argv[0], &fs) != -1)
+			{
+				if (fs.st_mode == 16877)
+				{	write(1, "bash :", 7);
+					write(1, argv[0], sizeof(argv[0]));
+					write(1, " : is a directory\n", 20);
 				}
+				else
+					_exec(argv);
+			}
 		}
-		else 
+		else
 			envi(env, argv);
 		free(argv);
+		i = 0;
 	}
 	return (0);
 }
+
