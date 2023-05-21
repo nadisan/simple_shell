@@ -6,43 +6,28 @@
 #include "shell.h"
 #include <sys/stat.h>
 
-/**
-  * envi - executes cmd if it's in path
-  * @argv: argument array
-  * Return: 0 (program successful)
-  */
-
-void envi(char **env, char **argv)
+void check_cmd (char **argv, char **env)
 {
-	unsigned int i, j = 0;
-	char *path, *ele, *ch = "/", *str = NULL;
-	struct stat st;
-	char result[100];
+        struct stat fs;
 
-	str = argv[0];
-	i = 0;
-	while (env[i] != NULL)
-	{	path = strdup(env[i]);
-		if (_strcmp("PATH", strtok(path, "=")) == 0)
-			break;
-		i++;
-	}
-	ele = malloc(sizeof(env[i]));
-	ele =  strtok(NULL, ":");
-	while (ele)
-	{	strcpy(result, ele);
-		strcat(result, ch);
-		strcat(result, str);
-		if (stat(result, &st) == 0)
-		{	argv[0] = result;
-			break;
-		}
-		j++;
-		ele = strtok(NULL, ":");
-	}
-	_exec(argv);
-	ele = '\0';
+        if (access(argv[0], F_OK) == 0)
+                {
+                        if (stat(argv[0], &fs) != -1)
+                        {
+                                if (fs.st_mode == 16877)
+                                {       write(1, "bash :", 7);
+                                        write(1, argv[0], sizeof(argv[0]));
+                                        write(1, " : is a directory\n", 20);
+                                }
+                                else
+                                        _exec(argv);
+
+                       }
+                }
+        else
+                cmdpath(env, argv);
 }
+
 
 /**
   * main - simple_shell program
@@ -59,7 +44,6 @@ int main(int ac, char **av, char **env)
 	size_t len = 0;
 	char **argv;
 	unsigned int i = 0;
-	struct stat fs;
 
 	while (1)
 	{
@@ -85,24 +69,9 @@ int main(int ac, char **av, char **env)
 			free(argv);
 			break;
 		}
-		if (access(argv[0], F_OK) == 0)
-		{
-			if (stat(argv[0], &fs) != -1)
-			{
-				if (fs.st_mode == 16877)
-				{	write(1, "bash :", 7);
-					write(1, argv[0], sizeof(argv[0]));
-					write(1, " : is a directory\n", 20);
-				}
-				else
-					_exec(argv);
-			}
-		}
-		else
-			envi(env, argv);
+		check_cmd(argv, env);
 		free(argv);
 		i = 0;
 	}
 	return (0);
 }
-
