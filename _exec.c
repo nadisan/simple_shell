@@ -10,6 +10,7 @@ int _exec(char **argv)
 {
         pid_t pid;
         int status;
+	extern char **environ;
 
         pid = fork();
 
@@ -19,7 +20,7 @@ int _exec(char **argv)
         }
         else if (pid == 0)
         {
-                execve(argv[0], argv, NULL);
+                execve(argv[0], argv, environ);
                 perror("Error:");
                 exit(EXIT_FAILURE);
         }
