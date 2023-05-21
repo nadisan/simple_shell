@@ -76,7 +76,6 @@ int main(void)
 		if (_strcmp("env", argv[0]) == 0)
 			printEnv();
 		_exec(argv);
-		i = 0;
 		free(argv);
 	}
 	return (0);
