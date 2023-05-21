@@ -1,4 +1,4 @@
-#INclude <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
@@ -76,7 +76,7 @@ int main(void)
         else if (procId == -1)
             perror("Error: Forking failed!");
     }
-     else if (token != NULL && *token != '\n' && (strcmp(token, "exit") == 0))
+     else if (token1 != NULL && *token1 != '\n' && (strcmp(token1, "exit") == 0))
     {
         printf("Exiting....\n");
         return (0);
