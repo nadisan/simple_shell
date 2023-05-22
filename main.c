@@ -35,11 +35,10 @@ void check_cmd(char **argv, char **env)
 		cmdpath(env, argv);
 }
 
-
 /**
   * main - simple_shell program
-  * @ac: number of arguments
-  * @av: argument array
+  * @ac: (unused) number of arguments
+  * @av: (unused) argument array
   * @env: environment variable
   * Return: 0 (program successful)
   */
