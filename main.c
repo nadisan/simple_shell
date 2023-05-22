@@ -25,7 +25,7 @@ void check_cmd(char **argv, char **env)
 			{
 				write(1, "bash :", 7);
 				write(1, argv[0], sizeof(argv[0]));
-				write(1, " : is a directory\n", 20);
+				write(1, " : is a directory\n", 19);
 			}
 			else
 				_exec(argv);
