@@ -73,8 +73,7 @@ int main(int ac, char **av, char **env)
 			argv[i] = strtok(NULL, " \n");
 		}
 		if (_strcmp("exit", argv[0]) == 0)
-		{	write(1, "\n\n", 3);
-			write(1, "[Disconnected...]\n", 20);
+		{
 			free(line);
 			free(argv);
 			break;
