@@ -24,7 +24,7 @@ void check_cmd(char **argv, char **env)
 			if (fs.st_mode == 16877)
 			{
 				write(1, "bash :", 7);
-				write(1, argv[0], sizeof(argv[0]));
+				write(1, argv[0], (sizeof(argv[0])));
 				write(1, " : is a directory\n", 19);
 			}
 			else
@@ -46,35 +46,38 @@ void check_cmd(char **argv, char **env)
 int main(__attribute__((unused)) int ac,
 		__attribute__((unused)) char **av, char **env)
 {
-	char *buffer = "($) ";
-	ssize_t input;
 	char *line = NULL;
+	ssize_t input;
 	size_t len = 0;
 	char **argv;
 	unsigned int i = 0;
 
 	while (1)
 	{
-		write(STDOUT_FILENO, buffer, 5);
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "($) ", 5);
 		input = getline(&line, &len, stdin);
 		if (input == -1)
-		{	write(1, "\n", 1);
+		{
+			if (isatty(STDIN_FILENO))
+				write(1, "\n", 1);
 			free(line);
 			break;
 		}
 		if (*line == '\n')
 			continue;
 		argv = malloc(sizeof(char) * input);
-		argv[0] = strtok(line, " \n");
 		if (argv == NULL)
 			return (0);
+		argv[0] = strtok(line, " \n");
+		if (!argv[0])
+			continue;
 		while (argv[i])
 		{	i++;
 			argv[i] = strtok(NULL, " \n");
 		}
 		if (_strcmp("exit", argv[0]) == 0)
-		{
-			free(line);
+		{	free(line);
 			free(argv);
 			break;
 		}
