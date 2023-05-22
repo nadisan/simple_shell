@@ -12,7 +12,6 @@ extern char **environ;
 
 int _putchar(char c);
 int _strcmp(char *s1, char *s2);
-void printEnv(void);
 int _exec(char **argv);
 void cmdpath(char **env, char **argv);
 char *_strcpy(char *dest, char *src);
