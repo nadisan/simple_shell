@@ -7,9 +7,10 @@
 #include <sys/stat.h>
 
 /**
-  * envi - executes cmd if it's in path
+  * cmdpath - finds file path of cmd and executes.
+  * @env: enviroment variable
   * @argv: argument array
-  * Return: 0 (program successful)
+  * Return: void
   */
 
 void cmdpath(char **env, char **argv)
@@ -22,7 +23,7 @@ void cmdpath(char **env, char **argv)
 	str = argv[0];
 	i = 0;
 	while (env[i] != NULL)
-	{	path = strdup(env[i]);
+	{	path = _strdup(env[i]);
 		if (_strcmp("PATH", strtok(path, "=")) == 0)
 			break;
 		i++;
@@ -30,16 +31,19 @@ void cmdpath(char **env, char **argv)
 	ele = malloc(sizeof(env[i]));
 	ele =  strtok(NULL, ":");
 	while (ele)
-	{	strcpy(result, ele);
-		strcat(result, ch);
-		strcat(result, str);
+	{	_strcpy(result, ele);
+		_strcat(result, ch);
+		_strcat(result, str);
 		if (stat(result, &st) == 0)
 		{	argv[0] = result;
-			break;
+			_exec(argv);
+			ele = '\0';
+			return;
 		}
 		j++;
 		ele = strtok(NULL, ":");
 	}
-	_exec(argv);
-	ele = '\0';
+	write(1, "./shell: ", 9);
+	/*write(1, argv[0], (sizeof(argv[0]) - 1));*/
+	write(1, "No such file or directory\n", 26);
 }
