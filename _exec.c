@@ -10,7 +10,6 @@ int _exec(char **argv)
 {
 	pid_t pid;
 	int status;
-	extern char **environ;
 
 	pid = fork();
 
