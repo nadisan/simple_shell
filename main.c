@@ -66,7 +66,7 @@ int main(__attribute__((unused)) int ac,
 		}
 		if (*line == '\n')
 			continue;
-		argv = malloc(sizeof(char) * input);
+		argv = malloc(sizeof(char) * input * 5);
 		if (argv == NULL)
 			return (0);
 		argv[0] = strtok(line, " \n");
