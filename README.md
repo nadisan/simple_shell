@@ -21,3 +21,9 @@ This project is mainly focused on the C topic `system calls`. Here are some of t
 - [x] exit
 
 Other notable C concepts used but not limited to are: `malloc`, `free`, `main prototypes`, `string functions` and `pointers`.
+
+Our shell project has been compiled using the following command:
+
+```
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+```
