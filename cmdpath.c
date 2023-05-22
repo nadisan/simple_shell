@@ -23,15 +23,19 @@ void cmdpath(char **env, char **argv)
 	str = argv[0];
 	i = 0;
 	while (env[i] != NULL)
-	{	path = _strdup(env[i]);
+	{
+		path = _strdup(env[i]);
 		if (_strcmp("PATH", strtok(path, "=")) == 0)
 			break;
 		i++;
 	}
 	ele = malloc(sizeof(env[i]));
+	if (ele == NULL)
+		return;
 	ele =  strtok(NULL, ":");
 	while (ele)
-	{	_strcpy(result, ele);
+	{
+		_strcpy(result, ele);
 		_strcat(result, ch);
 		_strcat(result, str);
 		if (stat(result, &st) == 0)

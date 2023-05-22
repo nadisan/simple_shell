@@ -18,7 +18,10 @@ char *_strdup(char *src)
 	i++;
 	p = malloc(sizeof(char) * i);
 	if (!p)
+	{
+		free(p);
 		return (NULL);
+	}
 	_memcpy(p, src, i);
 	return (p);
 }
