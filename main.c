@@ -44,7 +44,7 @@ void check_cmd(char **argv, char **env)
   * Return: 0 (program successful)
   */
 
-int main(int ac, char **av, char **env)
+int main(__attribute__((unused)) int ac, char **av, char **env)
 {
 	char *buffer = "($) ";
 	ssize_t input;
