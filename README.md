@@ -5,3 +5,11 @@
 ### Task 0x16. C
 
 A Simple Shell created using `C programming language`
+
+### Concepts and Tools Used
+
+This project is mainly focused on the C topic `system calls`. Here are some of the concepts used in this project:
+- [x] Fork
+- [x] PID & PPID
+- [x] exec functions: precisely execve
+- [x] wait
