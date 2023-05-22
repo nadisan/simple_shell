@@ -13,3 +13,6 @@ This project is mainly focused on the C topic `system calls`. Here are some of t
 - [x] PID & PPID
 - [x] exec functions: precisely execve
 - [x] wait
+- [x] strtok
+- [x] env
+- [x] PATH
