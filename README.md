@@ -14,5 +14,10 @@ This project is mainly focused on the C topic `system calls`. Here are some of t
 - [x] exec functions: precisely execve
 - [x] wait
 - [x] strtok
+- [x] stat
 - [x] env
 - [x] PATH
+- [x] perror
+- [x] exit
+
+Other notable C concepts used but not limited to are: `malloc`, `free`, `main prototypes`, `string functions` and `pointers`.
