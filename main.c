@@ -9,7 +9,7 @@
 /**
   * check_cmd - check access of cmd
   * @argv: argument array from input
-  * @: argument array for runing shell
+  * @av: argument array for runing shell
   * @env: array of enviroment
   * Return: 0 (program successful)
   */
@@ -40,7 +40,7 @@ void check_cmd(char **argv, char **av, char **env)
 /**
   * main - simple_shell program
   * @ac: (unused) number of arguments
-  * @av: (unused) argument array
+  * @av: argument array
   * @env: environment variable
   * Return: 0 (program successful)
   */
