@@ -10,13 +10,12 @@
   * cmdpath - finds file path of cmd and executes.
   * @env: enviroment variable
   * @argv: argument array for input
-  * @av; argument array for running shell
+  * @av: argument array for running shell
   * Return: void
   */
 
 void cmdpath(char **env, char **argv, char **av)
-{
-	unsigned int i, j = 0;
+{	unsigned int i;
 	char *path = NULL, *ele = NULL, *ch = "/", *str = NULL;
 	struct stat st;
 	char result[50];
@@ -24,14 +23,16 @@ void cmdpath(char **env, char **argv, char **av)
 	str = argv[0];
 	i = 0;
 	while (env[i] != NULL)
-	{
-		path = _strdup(env[i]);
+	{	path = _strdup(env[i]);
 		if (_strcmp("PATH", strtok(path, "=")) == 0)
 			break;
 		i++;
 		free(path);
 	}
-
+	path = realloc(path, _strlen(env[i]) + 1);
+	path = strcpy(path, (env[i]));
+	path[_strlen(env[i])] = '\0';
+	strtok(path, "=");
 	ele =  strtok(NULL, ":");
 	while (ele)
 	{
@@ -44,7 +45,7 @@ void cmdpath(char **env, char **argv, char **av)
 			free(path);
 			return;
 		}
-		j++;
+		i++;
 		ele = strtok(NULL, ":");
 	}
 	_putstr(av[0]);
