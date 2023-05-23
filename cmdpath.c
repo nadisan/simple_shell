@@ -16,7 +16,7 @@
 void cmdpath(char **env, char **argv)
 {
 	unsigned int i, j = 0;
-	char *path, *ele, *ch = "/", *str = NULL;
+	char *path = NULL, *ele = NULL, *ch = "/", *str = NULL;
 	struct stat st;
 	char result[100];
 
@@ -28,10 +28,9 @@ void cmdpath(char **env, char **argv)
 		if (_strcmp("PATH", strtok(path, "=")) == 0)
 			break;
 		i++;
+		free(path);
 	}
-	ele = malloc(sizeof(env[i]));
-	if (ele == NULL)
-		return;
+
 	ele =  strtok(NULL, ":");
 	while (ele)
 	{
@@ -41,7 +40,7 @@ void cmdpath(char **env, char **argv)
 		if (stat(result, &st) == 0)
 		{	argv[0] = result;
 			_exec(argv);
-			ele = '\0';
+			free(path);
 			return;
 		}
 		j++;
@@ -50,4 +49,5 @@ void cmdpath(char **env, char **argv)
 	write(1, "./shell: ", 9);
 	/*write(1, argv[0], (sizeof(argv[0]) - 1));*/
 	write(1, "No such file or directory\n", 26);
+	free(path);
 }
