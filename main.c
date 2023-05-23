@@ -16,9 +16,7 @@
 void sig(int sig_num)
 {
 	if (sig_num == SIGINT)
-	{
 		_putstr("\n($) ");
-	}
 }
 
 /**
