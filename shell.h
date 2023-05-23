@@ -19,4 +19,5 @@ char *_strcat(char *dest, char *src);
 char *_strdup(char *src);
 char *_memcpy(char *dest, char *src, unsigned int n);
 int _putstr(char *c);
+int _strlen(char *c);
 #endif
