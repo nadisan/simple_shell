@@ -49,7 +49,7 @@ int main(__attribute__((unused)) int ac,
 	char *line = NULL;
 	ssize_t input;
 	size_t len = 0;
-	char **argv;
+	char *argv[100];
 	unsigned int i = 0;
 
 	while (1)
@@ -61,14 +61,10 @@ int main(__attribute__((unused)) int ac,
 		{
 			if (isatty(STDIN_FILENO))
 				write(1, "\n", 1);
-			free(line);
 			break;
 		}
 		if (*line == '\n')
 			continue;
-		argv = malloc(sizeof(char) * input * 5);
-		if (argv == NULL)
-			return (0);
 		argv[0] = strtok(line, " \n");
 		if (!argv[0])
 			continue;
@@ -77,13 +73,10 @@ int main(__attribute__((unused)) int ac,
 			argv[i] = strtok(NULL, " \n");
 		}
 		if (_strcmp("exit", argv[0]) == 0)
-		{	free(line);
-			free(argv);
 			break;
-		}
 		check_cmd(argv, env);
-		free(argv);
 		i = 0;
 	}
+	free(line);
 	return (0);
 }
