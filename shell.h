@@ -7,6 +7,7 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <signal.h>
 
 extern char **environ;
 
@@ -20,4 +21,5 @@ char *_strdup(char *src);
 char *_memcpy(char *dest, char *src, unsigned int n);
 int _putstr(char *c);
 int _strlen(char *c);
+
 #endif
