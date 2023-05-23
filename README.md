@@ -27,3 +27,8 @@ Our shell project has been compiled using the following command:
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
+
+Which you can then run using the command:
+```
+./hsh
+```
