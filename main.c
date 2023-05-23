@@ -6,6 +6,21 @@
 #include "shell.h"
 #include <sys/stat.h>
 
+
+/**
+ * sig - prevents ctrl c termination
+ * @sig_num: signal input
+ * Return: void
+ */
+
+void sig(int sig_num)
+{
+	if (sig_num == SIGINT)
+	{
+		_putstr("\n($) ");
+	}
+}
+
 /**
   * check_cmd - check access of cmd
   * @argv: argument array from input
@@ -53,6 +68,7 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 	char *argv[100];
 	unsigned int i = 0;
 
+	signal(SIGINT, sig);
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
