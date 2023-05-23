@@ -5,7 +5,7 @@
 #include <sys/wait.h>
 #include "shell.h"
 #include <sys/stat.h>
-
+#include <signal.h>
 
 /**
  * sig - prevents ctrl c termination
