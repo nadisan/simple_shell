@@ -9,16 +9,17 @@
 /**
   * cmdpath - finds file path of cmd and executes.
   * @env: enviroment variable
-  * @argv: argument array
+  * @argv: argument array for input
+  * @av; argument array for running shell
   * Return: void
   */
 
-void cmdpath(char **env, char **argv)
+void cmdpath(char **env, char **argv, char **av)
 {
 	unsigned int i, j = 0;
 	char *path = NULL, *ele = NULL, *ch = "/", *str = NULL;
 	struct stat st;
-	char result[100];
+	char result[50];
 
 	str = argv[0];
 	i = 0;
@@ -46,8 +47,9 @@ void cmdpath(char **env, char **argv)
 		j++;
 		ele = strtok(NULL, ":");
 	}
-	write(1, "./shell: ", 9);
-	/*write(1, argv[0], (sizeof(argv[0]) - 1));*/
-	write(1, "No such file or directory\n", 26);
+	_putstr(av[0]);
+	_putstr(": ");
+	_putstr(argv[0]);
+	_putstr(": No such file or directory\n");
 	free(path);
 }

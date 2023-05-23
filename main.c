@@ -8,12 +8,13 @@
 
 /**
   * check_cmd - check access of cmd
-  * @argv: argument array
+  * @argv: argument array from input
+  * @: argument array for runing shell
   * @env: array of enviroment
   * Return: 0 (program successful)
   */
 
-void check_cmd(char **argv, char **env)
+void check_cmd(char **argv, char **av, char **env)
 {
 	struct stat fs;
 
@@ -23,16 +24,17 @@ void check_cmd(char **argv, char **env)
 		{
 			if (fs.st_mode == 16877)
 			{
-				write(1, "bash :", 7);
-				write(1, argv[0], (sizeof(argv[0])));
-				write(1, " : is a directory\n", 19);
+				_putstr(av[0]);
+				 _putstr(": ");
+				_putstr(argv[0]);
+				_putstr(": is a directory\n");
 			}
 			else
 				_exec(argv);
 		}
 	}
 	else
-		cmdpath(env, argv);
+		cmdpath(env, argv, av);
 }
 
 /**
@@ -43,8 +45,7 @@ void check_cmd(char **argv, char **env)
   * Return: 0 (program successful)
   */
 
-int main(__attribute__((unused)) int ac,
-		__attribute__((unused)) char **av, char **env)
+int main(__attribute__((unused)) int ac, char **av, char **env)
 {
 	char *line = NULL;
 	ssize_t input;
@@ -74,7 +75,7 @@ int main(__attribute__((unused)) int ac,
 		}
 		if (_strcmp("exit", argv[0]) == 0)
 			break;
-		check_cmd(argv, env);
+		check_cmd(argv, av, env);
 		i = 0;
 	}
 	free(line);

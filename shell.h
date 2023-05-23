@@ -13,10 +13,10 @@ extern char **environ;
 int _putchar(char c);
 int _strcmp(char *s1, char *s2);
 int _exec(char **argv);
-void cmdpath(char **env, char **argv);
+void cmdpath(char **env, char **argv, char **av);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 char *_strdup(char *src);
 char *_memcpy(char *dest, char *src, unsigned int n);
-
+int _putstr(char *c);
 #endif
