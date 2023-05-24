@@ -23,5 +23,5 @@ char *_memcpy(char *dest, char *src, unsigned int n);
 int _puts(char *c);
 int _strlen(char *c);
 char *_getline();
-char *hashtag(char *buffer);
+void hashtag(char *buffer);
 #endif
