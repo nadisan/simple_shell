@@ -62,6 +62,7 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 	char *line = NULL;
 	char *argv[100];
 	unsigned int i = 0;
+	int e = 0;
 
 	signal(SIGINT, sig);
 	while (1)
@@ -84,6 +85,15 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 		}
 		if (_strcmp("exit", argv[0]) == 0)
 			exitShell(argv, line);
+		else if (_strcmp("env", argv[0]) == 0)
+		{
+			while (environ[e])
+			{
+				_puts(environ[i]);
+				_puts("\n");
+				e++;
+			}
+		}
 		check_cmd(argv, av, env);
 		i = 0;
 		free(line);
