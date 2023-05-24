@@ -39,5 +39,25 @@ char *_getline()
 		}
 	}
 	buffer[i] = '\0';
-	return (buffer);
+	return (hashtag(buffer));
 }
+
+/**
+ * hashtag - checks for # comments
+ * @buff: string to check
+ * Return: void
+ */
+
+char *hashtag(char *buff)
+{
+	int i = 0;
+
+	while (buff[i])
+	{
+		if (buff[i] == '#' && buff[i - 1] == ' ' && buff[i + 1] == ' ')
+			buff[i] = '\0';
+		i++;
+	}
+	return (buff);
+}
+
