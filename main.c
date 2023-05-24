@@ -83,7 +83,7 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 			argv[i] = strtok(NULL, " \n");
 		}
 		if (_strcmp("exit", argv[0]) == 0)
-			exit(0);
+			break;
 		check_cmd(argv, av, env);
 		i = 0;
 		free(line);
