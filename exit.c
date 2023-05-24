@@ -35,4 +35,5 @@ int exitShell(char *argv[], char *line)
 
 	free(line);
 	exit(EXIT_SUCCESS);
+	return (0);
 }
