@@ -24,4 +24,7 @@ int _puts(char *c);
 int _strlen(char *c);
 char *_getline();
 void hashtag(char *buffer);
+int _atoi(char *s);
+int exitShell(char *argv[], char *line);
+
 #endif
