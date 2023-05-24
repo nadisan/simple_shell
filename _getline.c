@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * _getline - gets string line from stdin file
+ *
+ * Return: Read string with null pointer
+ */
+
 char *_getline()
 {
 	char *buffer = NULL;
