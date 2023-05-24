@@ -49,7 +49,7 @@ void cmdpath(char **env, char **argv, char **av)
 		ele = strtok(NULL, ":");
 	}
 	_puts(av[0]);
-	_puts(": ");
+	_puts(": 1: ");
 	_puts(argv[0]);
 	_puts(": No such file or directory\n");
 	free(path);
