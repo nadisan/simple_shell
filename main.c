@@ -15,7 +15,7 @@
 void sig(int sig_num)
 {
 	if (sig_num == SIGINT)
-		_putstr("\n($) ");
+		_puts("\n($) ");
 }
 
 /**
@@ -36,10 +36,10 @@ void check_cmd(char **argv, char **av, char **env)
 		{
 			if (fs.st_mode == 16877)
 			{
-				_putstr(av[0]);
-				 _putstr(": ");
-				_putstr(argv[0]);
-				_putstr(": is a directory\n");
+				_puts(av[0]);
+				_puts(": ");
+				_puts(argv[0]);
+				_puts(": is a directory\n");
 			}
 			else
 				_exec(argv);
@@ -60,8 +60,8 @@ void check_cmd(char **argv, char **av, char **env)
 int main(__attribute__((unused)) int ac, char **av, char **env)
 {
 	char *line = NULL;
-	ssize_t input;
-	size_t len = 0;
+	/*ssize_t input;
+	size_t len = 0;*/
 	char *argv[100];
 	unsigned int i = 0;
 
@@ -72,15 +72,11 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 		{	fflush(stdout);
 			write(STDOUT_FILENO, "($) ", 5);
 		}
-		input = getline(&line, &len, stdin);
-		if (input == -1)
-		{
-			if (isatty(STDIN_FILENO))
-				write(1, "\n", 1);
-			break;
-		}
+		line = _getline();
 		if (*line == '\n')
+		{	free(line);
 			continue;
+		}
 		argv[0] = strtok(line, " \n");
 		if (!argv[0])
 			continue;
@@ -92,7 +88,9 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 			break;
 		check_cmd(argv, av, env);
 		i = 0;
+		free(line);
 	}
-	free(line);
+	if (line)
+		free(line);
 	return (0);
 }

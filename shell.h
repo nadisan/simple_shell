@@ -8,6 +8,8 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
+#define BUFSIZE 10240
+
 extern char **environ;
 
 int _putchar(char c);
@@ -18,7 +20,7 @@ char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 char *_strdup(char *src);
 char *_memcpy(char *dest, char *src, unsigned int n);
-int _putstr(char *c);
+int _puts(char *c);
 int _strlen(char *c);
-
+char *_getline();
 #endif
