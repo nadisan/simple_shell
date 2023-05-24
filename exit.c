@@ -27,6 +27,7 @@ int exitShell(char *argv[], char *line)
 	}
 	else
 	{
+		_puts("exit: Illegal number: ");
 		_puts(argv[1]);
 		_puts("\n");
 		exit(2);
