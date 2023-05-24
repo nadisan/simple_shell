@@ -8,7 +8,7 @@
 
 char *_getline()
 {
-	char *buffer = NULL, *buff;
+	char *buffer = NULL;
 	int i = 0, x = 0, buffersize = BUFSIZE;
 	char c = 0, prebuf = '\0';
 
@@ -39,10 +39,8 @@ char *_getline()
 		}
 	}
 	buffer[i] = '\0';
-
 	hashtag(buffer);
-	buff = buffer;
-	return (buff);
+	return (buffer);
 }
 
 /**
@@ -53,16 +51,18 @@ char *_getline()
 
 void hashtag(char *buff)
 {
-	int i = 0;
+	int i = 1;
 
 	if (buff[0] == '#')
 		buff[i] = '\0';
-	i++;
-	while (buff[i])
+	else
 	{
-		if (buff[i] == '#' && buff[i - 1] == ' ' && buff[i + 1] == ' ')
-			buff[i] = '\0';
-		i++;
+		while (buff[i])
+		{
+			if (buff[i] == '#' && buff[i - 1] == ' ' && buff[i + 1] == ' ')
+				buff[i] = '\0';
+			i++;
+		}
 	}
 }
 
