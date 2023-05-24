@@ -60,8 +60,6 @@ void check_cmd(char **argv, char **av, char **env)
 int main(__attribute__((unused)) int ac, char **av, char **env)
 {
 	char *line = NULL;
-	/*ssize_t input;
-	size_t len = 0;*/
 	char *argv[100];
 	unsigned int i = 0;
 
