@@ -14,7 +14,10 @@ char *_getline()
 
 	buffer = malloc(BUFSIZE);
 	if (!buffer)
+	{
+		free(buffer);
 		return (NULL);
+	}
 	for (; c != EOF && c != '\n'; i++)
 	{
 		fflush(stdin);
