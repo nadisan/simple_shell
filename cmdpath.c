@@ -30,7 +30,7 @@ void cmdpath(char **env, char **argv, char **av)
 		free(path);
 	}
 	path = realloc(path, _strlen(env[i]) + 1);
-	path = strcpy(path, (env[i]));
+	path = _strcpy(path, (env[i]));
 	path[_strlen(env[i])] = '\0';
 	strtok(path, "=");
 	ele =  strtok(NULL, ":");
