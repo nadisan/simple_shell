@@ -3,7 +3,6 @@
 /**
  * _puts - write the string c to stdout
  * @c: The string to print
- *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
@@ -14,4 +13,19 @@ int _puts(char *c)
 		i++;
 
 	return (write(1, c, i));
+}
+
+/**
+ * _puts - write the string c to stdout
+ * @c: The string to print
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putser(char *c)
+{       int i = 0;
+
+        while (c[i])
+                i++;
+
+        return (write(2, c, i));
 }
