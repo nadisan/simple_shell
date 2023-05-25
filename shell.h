@@ -26,5 +26,7 @@ char *_getline();
 void hashtag(char *buffer);
 int _atoi(char *s);
 int exitShell(char *argv[], char *line);
+void unsignedPrint(unsigned int num);
+void numPrint(int num);
 
 #endif
