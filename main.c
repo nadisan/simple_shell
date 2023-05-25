@@ -84,6 +84,8 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 		}
 		if (_strcmp("exit", argv[0]) == 0)
 			exitShell(argv, line);
+		else if (_strcmp("echo", argv[0]) == 0 && argv[1] != NULL)
+			echoSpecial(argv, i);
 		check_cmd(argv, av, env);
 		i = 0;
 		free(line);

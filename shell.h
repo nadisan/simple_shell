@@ -28,5 +28,9 @@ int _atoi(char *s);
 int exitShell(char *argv[], char *line);
 void unsignedPrint(unsigned int num);
 void numPrint(int num);
+int printEcho(char **param);
+int _strncmp(const char *s1, const char *s2, size_t l);
+char *_getenv(char *param);
+int echoSpecial(char **comm, int a);
 
 #endif
