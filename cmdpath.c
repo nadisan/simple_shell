@@ -51,6 +51,6 @@ void cmdpath(char **env, char **argv, char **av)
 	_putser(av[0]);
 	_putser(": 1: ");
 	_putser(argv[0]);
-	_putser(": No such file or directory\n");
+	_putser(": not found\n");
 	free(path);
 }
