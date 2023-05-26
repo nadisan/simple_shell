@@ -16,16 +16,15 @@ int _puts(char *c)
 }
 
 /**
- * _puts - write the string c to stdout
+ * _putser - write the string c to stdout
  * @c: The string to print
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
 int _putser(char *c)
-{       int i = 0;
+{	int i = 0;
 
-        while (c[i])
-                i++;
-
-        return (write(2, c, i));
+	while (c[i])
+		i++;
+	return (write(2, c, i));
 }
