@@ -20,7 +20,7 @@ char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 char *_strdup(char *src);
 char *_memcpy(char *dest, char *src, unsigned int n);
-int _puts( char *c);
+int _puts(char *c);
 int _putser(char *c);
 int _strlen(char *c);
 char *_getline();
