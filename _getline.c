@@ -62,7 +62,8 @@ void hashtag(char *buff)
 		return;
 	}
 	else
-	{	while (buff[i])
+	{
+		while (buff[i])
 		{
 			if (buff[i] == '#' && buff[i - 1] == ' ')
 				buff[i] = '\0';
